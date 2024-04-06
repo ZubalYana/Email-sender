@@ -17,7 +17,7 @@ app.post('/send-name', (req, res) => {
     })
 })
 app.get('/admin', (req, res) => {
-    res.sendFile(__dirname + '/public/admin.html');
+    res.sendFile(__dirname + '/public/admin/admin.html');
 })
 app.listen(PORT, () => {
     console.log(`Server work on PORT: ${PORT}`);
