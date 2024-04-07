@@ -15,4 +15,31 @@
 .wrap h2 {
   margin-top: 15px;
   color: #333;
+}
+.wrap .filesContainer {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.wrap .filesContainer .filesContainer_file {
+  width: 200px;
+  height: 200px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 15px 0 0;
+  border-radius: 6px;
+  transition: 0.5s ease;
+}
+.wrap .filesContainer .filesContainer_file:hover {
+  background-color: #fff;
+  color: #333;
+  border: #333 1px solid;
+  box-shadow: #333 5px 5px 4px;
 }/*# sourceMappingURL=admin.css.map */
