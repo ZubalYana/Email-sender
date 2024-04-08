@@ -3,7 +3,7 @@ const app = express();
 const fs = require('fs')
 const PORT = 3000;
 const path = require('path')
-const emailsFolderPath = path.join(__dirname, 'emails'); // Define the path to your emails folder
+const emailsFolderPath = path.join(__dirname, 'emails');
 
 app.use(express.static('public'));
 app.use(express.json())
@@ -25,6 +25,22 @@ app.get('/files', (req, res) => {
         res.send(files);
     });
 });
+
+app.get('/file-content', (req, res) => {
+    const { fileName } = req.query;
+    const filePath = path.join(emailsFolderPath, fileName);
+
+    fs.readFile(filePath, 'utf8', (err, content) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        res.send(content);
+    });
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server work on PORT: ${PORT}`);
 })

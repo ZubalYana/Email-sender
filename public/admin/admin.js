@@ -1,17 +1,28 @@
 axios.get('/files')
-  .then(response => {
-    const filesContainer = $('.filesContainer');
-    response.data.forEach(fileName => {
-      filesContainer.append(`<div class="filesContainer_file">${fileName}</div>`);
-      // $('.filesPopup_fileName').html(`${this.fileName}`)
+    .then(response => {
+        const filesContainer = $('.filesContainer');
+        response.data.forEach(fileName => {
+            const fileElement = $(`<div class="filesContainer_file">${fileName}</div>`);
+            filesContainer.append(fileElement);
+
+            fileElement.click(() => {
+                axios.get('/file-content', { params: { fileName } })
+                    .then(contentResponse => {
+                        const content = contentResponse.data;
+                        $('.filesPopup_fileName').html(fileName);
+                        $('.filesPopup_fileFiling').html(content);
+                        $('.filesPopup_container').css('display', 'flex');
+                    })
+                    .catch(error => {
+                        console.error('Error fetching file content:', error);
+                    });
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching files:', error);
     });
-    $('.filesContainer_file').click(()=>{
-      $('.filesPopup_container').css('display', 'flex')
-    })
-    $('.xmark').click(()=>{
-      $('.filesPopup_container').css('display', 'none')
-    })
-  })
-  .catch(error => {
-    console.error('Error fetching files:', error);
-  });
+
+$('.xmark').click(() => {
+    $('.filesPopup_container').css('display', 'none');
+});
