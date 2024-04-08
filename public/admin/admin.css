@@ -42,4 +42,36 @@
   color: #333;
   border: #333 1px solid;
   box-shadow: #333 5px 5px 4px;
+}
+
+.filesPopup_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(51, 51, 51, 0.662745098);
+}
+.filesPopup_container .filesPopup {
+  width: 80%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border: 2px #ccc solid;
+  border-radius: 20px;
+  background-color: #fff;
+  position: relative;
+}
+.filesPopup_container .filesPopup .xmark {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
 }/*# sourceMappingURL=admin.css.map */
