@@ -7,9 +7,14 @@ const emailsFolderPath = path.join(__dirname, 'emails'); // Define the path to y
 
 app.use(express.static('public'));
 app.use(express.json())
+app.post('/send-name', (req, res) => {
+    const { name } = req.body;
+    console.log(name);
+})
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/public/admin/admin.html');
 })
+
 app.get('/files', (req, res) => {
     fs.readdir(emailsFolderPath, (err, files) => {
         if (err) {
