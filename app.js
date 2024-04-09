@@ -29,7 +29,7 @@ app.get('/files', (req, res) => {
 
 app.get('/file-content', (req, res) => {
     const { fileName } = req.query;
-    filePath = path.join(emailsFolderPath, fileName); // Update filePath
+    filePath = path.join(emailsFolderPath, fileName); 
     fs.readFile(filePath, 'utf8', (err, content) => {
         if (err) {
             console.error('Error reading file:', err);
@@ -51,7 +51,6 @@ app.post('/file-newContent', (req, res) => {
         res.send('File updated successfully');
     });
 });
-
 
 app.listen(PORT, () => {
     console.log(`Server work on PORT: ${PORT}`);

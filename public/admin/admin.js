@@ -4,7 +4,6 @@ axios.get('/files')
         response.data.forEach(fileName => {
             const fileElement = $(`<div class="filesContainer_file">${fileName}</div>`);
             filesContainer.append(fileElement);
-
             fileElement.click(() => {
                 axios.get('/file-content', { params: { fileName } })
                     .then(contentResponse => {
@@ -18,13 +17,11 @@ axios.get('/files')
                     });
             });
         });
-        ///
         $('.filesPopup_SaveChBtn').click(()=>{
             const updatedData = $('.filesPopup_fileFiling').val();
             console.log(updatedData);
             axios.post('/file-newContent', { content: updatedData })
         })
-        ///
     })
     .catch(error => {
         console.error('Error fetching files:', error);
