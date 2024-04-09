@@ -29,8 +29,7 @@ app.get('/files', (req, res) => {
 
 app.get('/file-content', (req, res) => {
     const { fileName } = req.query;
-    const filePath = path.join(emailsFolderPath, fileName);
-
+    filePath = path.join(emailsFolderPath, fileName); // Update filePath
     fs.readFile(filePath, 'utf8', (err, content) => {
         if (err) {
             console.error('Error reading file:', err);
@@ -39,18 +38,18 @@ app.get('/file-content', (req, res) => {
         }
         res.send(content);
     });
-    app.post('/file-newContent', (req, res) => {
-        const { content } = req.body;
-        console.log(content);
-        fs.writeFile(filePath, content, (err, content) => {
-            if (err) {
-                console.error('Error reading file:', err);
-                res.status(500).send('Internal Server Error');
-                return;
-            }
-            res.send(content);
-        });
-    })
+});
+
+app.post('/file-newContent', (req, res) => {
+    const { content } = req.body;
+    fs.writeFile(filePath, content, 'utf8', (err) => {
+        if (err) {
+            console.error('Error writing file:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        res.send('File updated successfully');
+    });
 });
 
 
