@@ -11,6 +11,10 @@ app.post('/send-name', (req, res) => {
     const { name } = req.body;
     console.log(name);
 })
+app.post('/file-newContent', (req, res) => {
+    const { content } = req.body;
+    console.log(content);
+})
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/public/admin/admin.html');
 })
