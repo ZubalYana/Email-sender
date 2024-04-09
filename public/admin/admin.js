@@ -11,6 +11,7 @@ axios.get('/files')
                         const content = contentResponse.data;
                         $('.filesPopup_fileName').html(fileName);
                         $('.filesPopup_fileFiling').html(content);
+                        $('.filesPopup_fileFiling_input').val(content);
                         $('.filesPopup_container').css('display', 'flex');
                     })
                     .catch(error => {
