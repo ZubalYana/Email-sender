@@ -11,10 +11,7 @@ app.post('/send-name', (req, res) => {
     const { name } = req.body;
     console.log(name);
 })
-app.post('/file-newContent', (req, res) => {
-    const { content } = req.body;
-    console.log(content);
-})
+
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/public/admin/admin.html');
 })
@@ -42,6 +39,18 @@ app.get('/file-content', (req, res) => {
         }
         res.send(content);
     });
+    app.post('/file-newContent', (req, res) => {
+        const { content } = req.body;
+        console.log(content);
+        fs.writeFile(filePath, content, (err, content) => {
+            if (err) {
+                console.error('Error reading file:', err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+            res.send(content);
+        });
+    })
 });
 
 
