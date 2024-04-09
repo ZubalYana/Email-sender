@@ -62,14 +62,23 @@
         border-radius: 20px;
         background-color: #fff;
         position: relative;
+        color: #333;
         .xmark{
             position: absolute;
             right: 20px;
             top: 20px;
-            color: #333;
             font-size: 24px;
             font-weight: 700;
             cursor: pointer;
+        }
+        .filesPopup_fileName{
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .filesPopup_fileFiling{
+            font-size: 24px;
+            font-weight: 300;
+            margin-top: 20px;
         }
     }
 }

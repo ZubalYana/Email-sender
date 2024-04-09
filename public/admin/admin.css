@@ -65,13 +65,22 @@
   border-radius: 20px;
   background-color: #fff;
   position: relative;
+  color: #333;
 }
 .filesPopup_container .filesPopup .xmark {
   position: absolute;
   right: 20px;
   top: 20px;
-  color: #333;
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
+}
+.filesPopup_container .filesPopup .filesPopup_fileName {
+  font-size: 40px;
+  font-weight: 700;
+}
+.filesPopup_container .filesPopup .filesPopup_fileFiling {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: 20px;
 }/*# sourceMappingURL=admin.css.map */
