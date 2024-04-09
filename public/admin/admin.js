@@ -18,6 +18,12 @@ axios.get('/files')
                     });
             });
         });
+        ///
+        $('.filesPopup_SaveChBtn').click(()=>{
+            const updatedData = $('.filesPopup_fileFiling').val();
+            console.log(updatedData);
+        })
+        ///
     })
     .catch(error => {
         console.error('Error fetching files:', error);
