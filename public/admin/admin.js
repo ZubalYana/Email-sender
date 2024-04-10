@@ -23,6 +23,8 @@ axios.get('/files')
             axios.post('/file-newContent', { content: updatedData })
         })
         $('.filesPopup_SendEmailsBtn').click(()=>{
+            axios.post('/send-mail')
+
         })
 
     })
