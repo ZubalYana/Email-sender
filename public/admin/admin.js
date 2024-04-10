@@ -22,6 +22,9 @@ axios.get('/files')
             console.log(updatedData);
             axios.post('/file-newContent', { content: updatedData })
         })
+        $('.filesPopup_SendEmailsBtn').click(()=>{
+        })
+
     })
     .catch(error => {
         console.error('Error fetching files:', error);
