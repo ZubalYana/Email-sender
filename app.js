@@ -67,32 +67,32 @@ app.use(bodyParser.urlencoded({
     }
   });
   app.use(bodyParser.json());
-  app.post('/send-mail', (req, res)=>{
-    console.log(req.body);
-    fs.readFile(filePath, 'utf8', (err, content) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
-        let mailOptions = {
-            from: 'Лист від Яни',
-            to: req.body,
-            subject: 'Високоінтелектуально',
-            text: req.body.message,
-          };
-        
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          });
-    });
+  app.post('/send-mail', (req, res) => {
+    const { emailAddresses } = req.body;
 
-    res.sendStatus(200);
-  })
+    if (!emailAddresses || !Array.isArray(emailAddresses) || emailAddresses.length === 0) {
+        return res.status(400).send('No valid email addresses provided');
+    }
+
+    const mailOptions = {
+        from: 'Your Name <your.email@gmail.com>',
+        to: emailAddresses.join(', '), 
+        subject: 'Your Subject Here',
+        text: 'Your Email Content Here',
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            res.status(500).send('Failed to send email');
+        } else {
+            console.log('Email sent:', info.response);
+            res.sendStatus(200);
+        }
+    });
+});
+
+
   
 
 app.listen(PORT, () => {

@@ -22,10 +22,22 @@ axios.get('/files')
             console.log(updatedData);
             axios.post('/file-newContent', { content: updatedData })
         })
-        $('.filesPopup_SendEmailsBtn').click(()=>{
-            axios.post('/send-mail')
-
-        })
+        
+        $('.filesPopup_SendEmailsBtn').click(() => {
+            const emailAddresses = [];
+            $('.filesContainer_file').each((index, element) => {
+                emailAddresses.push($(element).text().trim());
+            });
+        
+            axios.post('/send-mail', { emailAddresses })
+                .then(response => {
+                    console.log('Emails sent successfully');
+                })
+                .catch(error => {
+                    console.error('Error sending emails:', error);
+                });
+        });
+        
 
     })
     .catch(error => {
