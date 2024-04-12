@@ -10,7 +10,7 @@ axios.get('/files')
                         const content = contentResponse.data;
                         for(let el of content){
                             console.log(el)
-                            $('.filesPopup_fileFiling').val(el.gmail);
+                            $('.filesPopup_fileFiling').append(el.gmail + ', ');
                         }
                         $('.filesPopup_fileName').html(fileName);
                         // $('.filesPopup_fileFiling').val(content);
