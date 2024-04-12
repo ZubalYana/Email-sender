@@ -1,1 +1,4 @@
-monib41980@agaseo.com
+[
+    { "gmail": "monib41980@agaseo.com" },
+    { "gmail": "weyovov438@iliken.com" }
+]

@@ -8,8 +8,12 @@ axios.get('/files')
                 axios.get('/file-content', { params: { fileName } })
                     .then(contentResponse => {
                         const content = contentResponse.data;
+                        for(let el of content){
+                            console.log(el)
+                            $('.filesPopup_fileFiling').val(el.gmail);
+                        }
                         $('.filesPopup_fileName').html(fileName);
-                        $('.filesPopup_fileFiling').val(content);
+                        // $('.filesPopup_fileFiling').val(content);
                         $('.filesPopup_container').css('display', 'flex');
                     })
                     .catch(error => {
@@ -24,19 +28,27 @@ axios.get('/files')
         })
         
         $('.filesPopup_SendEmailsBtn').click(() => {
-            const emailAddresses = [];
-            $('.filesContainer_file').each((index, element) => {
-                emailAddresses.push($(element).text().trim());
-            });
-        
-            axios.post('/send-mail', { emailAddresses })
+            axios.get('/emails-list')
                 .then(response => {
-                    console.log('Emails sent successfully');
+                    const emails = response.data;
+                    const emailList = emails.map(entry => entry.gmail).join(', ');
+                    
+                    axios.post('/send-mail', { to: emailList })
+                        .then(() => {
+                            console.log('Emails sent successfully');
+                            // Optionally show a success message or handle UI update
+                        })
+                        .catch(error => {
+                            console.error('Error sending emails:', error);
+                            // Handle error or show error message
+                        });
                 })
                 .catch(error => {
-                    console.error('Error sending emails:', error);
+                    console.error('Error fetching email list:', error);
+                    // Handle error or show error message
                 });
         });
+        
         
 
     })

@@ -40,6 +40,7 @@ app.get('/file-content', (req, res) => {
             res.status(500).send('Internal Server Error');
             return;
         }
+        console.log(content)
         res.send(content);
     });
 });
@@ -59,6 +60,8 @@ app.post('/file-newContent', (req, res) => {
 app.use(bodyParser.urlencoded({
     extended: false
   }))
+
+
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -66,17 +69,14 @@ app.use(bodyParser.urlencoded({
       pass: `${process.env.PASSWORD}`
     }
   });
+
   app.use(bodyParser.json());
   app.post('/send-mail', (req, res) => {
-    const { emailAddresses } = req.body;
 
-    if (!emailAddresses || !Array.isArray(emailAddresses) || emailAddresses.length === 0) {
-        return res.status(400).send('No valid email addresses provided');
-    }
 
     const mailOptions = {
         from: 'Your Name <your.email@gmail.com>',
-        to: emailAddresses.join(', '), 
+        to: 'The gmails here', 
         subject: 'Your Subject Here',
         text: 'Your Email Content Here',
     };
@@ -94,6 +94,38 @@ app.use(bodyParser.urlencoded({
 
 
   
+app.get('/emails-list', (req, res) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading emails file:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+        const emails = JSON.parse(data);
+        res.send(emails);
+    });
+});
+
+app.post('/send-mail', (req, res) => {
+    const { to } = req.body;
+    const mailOptions = {
+        from: 'Your Name <your.email@gmail.com>',
+        to: to,
+        subject: 'Your Subject Here',
+        text: 'Your Email Content Here',
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            res.status(500).send('Failed to send email');
+        } else {
+            console.log('Email sent:', info.response);
+            res.sendStatus(200);
+        }
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server work on PORT: ${PORT}`);
