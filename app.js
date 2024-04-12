@@ -62,35 +62,28 @@ app.use(bodyParser.urlencoded({
   }))
 
 
-  let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: `${process.env.LOGIN}`,
-      pass: `${process.env.PASSWORD}`
-    }
-  });
 
-  app.use(bodyParser.json());
-  app.post('/send-mail', (req, res) => {
+//   app.use(bodyParser.json());
+//   app.post('/send-mail', (req, res) => {
 
 
-    const mailOptions = {
-        from: 'Your Name <your.email@gmail.com>',
-        to: 'The gmails here', 
-        subject: 'Your Subject Here',
-        text: 'Your Email Content Here',
-    };
+//     const mailOptions = {
+//         from: 'Your Name <your.email@gmail.com>',
+//         to: 'The gmails here', 
+//         subject: 'Your Subject Here',
+//         text: 'Your Email Content Here',
+//     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            res.status(500).send('Failed to send email');
-        } else {
-            console.log('Email sent:', info.response);
-            res.sendStatus(200);
-        }
-    });
-});
+//     transporter.sendMail(mailOptions, (error, info) => {
+//         if (error) {
+//             console.error('Error sending email:', error);
+//             res.status(500).send('Failed to send email');
+//         } else {
+//             console.log('Email sent:', info.response);
+//             res.sendStatus(200);
+//         }
+//     });
+// });
 
 
   
@@ -114,6 +107,14 @@ app.post('/send-mail', (req, res) => {
         subject: 'Your Subject Here',
         text: 'Your Email Content Here',
     };
+    
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: `${process.env.LOGIN}`,
+      pass: `${process.env.PASSWORD}`
+    }
+  });
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
