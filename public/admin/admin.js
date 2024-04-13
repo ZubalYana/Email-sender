@@ -14,7 +14,6 @@ axios.get('/files')
                             $('.filesPopup_fileFiling').append(el.gmail + ', ');
                         }
                         $('.filesPopup_fileName').html(fileName);
-                        // $('.filesPopup_fileFiling').val(content);
                         $('.filesPopup_container').css('display', 'flex');
                     })
                     .catch(error => {
@@ -37,16 +36,13 @@ axios.get('/files')
                     axios.post('/send-mail', { to: emailList })
                         .then(() => {
                             console.log('Emails sent successfully');
-                            // Optionally show a success message or handle UI update
                         })
                         .catch(error => {
                             console.error('Error sending emails:', error);
-                            // Handle error or show error message
                         });
                 })
                 .catch(error => {
                     console.error('Error fetching email list:', error);
-                    // Handle error or show error message
                 });
         });
         

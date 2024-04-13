@@ -61,32 +61,6 @@ app.use(bodyParser.urlencoded({
     extended: false
   }))
 
-
-
-//   app.use(bodyParser.json());
-//   app.post('/send-mail', (req, res) => {
-
-
-//     const mailOptions = {
-//         from: 'Your Name <your.email@gmail.com>',
-//         to: 'The gmails here', 
-//         subject: 'Your Subject Here',
-//         text: 'Your Email Content Here',
-//     };
-
-//     transporter.sendMail(mailOptions, (error, info) => {
-//         if (error) {
-//             console.error('Error sending email:', error);
-//             res.status(500).send('Failed to send email');
-//         } else {
-//             console.log('Email sent:', info.response);
-//             res.sendStatus(200);
-//         }
-//     });
-// });
-
-
-  
 app.get('/emails-list', (req, res) => {
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
