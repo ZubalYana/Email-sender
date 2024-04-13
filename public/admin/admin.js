@@ -7,6 +7,7 @@ axios.get('/files')
             fileElement.click(() => {
                 axios.get('/file-content', { params: { fileName } })
                     .then(contentResponse => {
+                        $('.filesPopup_fileFiling').empty();
                         const content = contentResponse.data;
                         for(let el of content){
                             console.log(el)
