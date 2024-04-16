@@ -25,6 +25,7 @@ axios.get('/files')
             const updatedData = $('#newEmails').val();
             console.log(updatedData);
             axios.post('/file-newContent', { content: updatedData })
+            $('#newEmails').val('')
         })
         
         $('.filesPopup_SendEmailsBtn').click(() => {
