@@ -120,6 +120,9 @@
   font-size: 24px;
   font-weight: 600;
 }
+.filesPopup_container .filesPopup .filesPopup_emailsAddingCon button i {
+  margin-right: 12px;
+}
 .filesPopup_container .filesPopup .filesPopup_emailsAddingCon button:hover {
   background-color: #fff;
   color: #333;
@@ -136,9 +139,12 @@
   border-radius: 20px;
   transition: 0.5s ease;
   cursor: pointer;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
   margin-top: 20px;
+}
+.filesPopup_container .filesPopup .filesPopup_SendEmailsBtn i {
+  margin-right: 12px;
 }
 .filesPopup_container .filesPopup .filesPopup_SendEmailsBtn:hover {
   background-color: #fff;
