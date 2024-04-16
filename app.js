@@ -47,7 +47,7 @@ app.get('/file-content', (req, res) => {
 
 app.post('/file-newContent', (req, res) => {
     const { content } = req.body;
-    fs.writeFile(filePath, content, 'utf8', (err) => {
+    fs.appendFile(filePath, content, 'utf8', (err) => {
         if (err) {
             console.error('Error writing file:', err);
             res.status(500).send('Internal Server Error');

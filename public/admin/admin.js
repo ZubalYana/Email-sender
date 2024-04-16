@@ -22,7 +22,7 @@ axios.get('/files')
             });
         });
         $('.filesPopup_SaveChBtn').click(()=>{
-            const updatedData = $('.filesPopup_fileFiling').val();
+            const updatedData = $('#newEmails').val();
             console.log(updatedData);
             axios.post('/file-newContent', { content: updatedData })
         })
