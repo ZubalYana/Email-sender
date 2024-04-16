@@ -45,15 +45,29 @@ app.get('/file-content', (req, res) => {
     });
 });
 
+// app.post('/file-newContent', (req, res) => {
+//     const { content } = req.body;
+//     fs.appendFile(filePath, content, 'utf8', (err) => {
+//         if (err) {
+//             console.error('Error writing file:', err);
+//             res.status(500).send('Internal Server Error');
+//             return;
+//         }
+//         res.send('File updated successfully');
+//     });
+// });
 app.post('/file-newContent', (req, res) => {
-    const { content } = req.body;
-    fs.appendFile(filePath, content, 'utf8', (err) => {
+    const emails = req.body.emails; // Retrieve 'emails' array from request body
+    const emailsString = emails.join('\n'); // Convert array to string with each email on a new line
+
+    fs.appendFile('customers.txt', emailsString + '\n', 'utf8', (err) => {
         if (err) {
             console.error('Error writing file:', err);
             res.status(500).send('Internal Server Error');
-            return;
+        } else {
+            console.log('File updated successfully');
+            res.send('File updated successfully');
         }
-        res.send('File updated successfully');
     });
 });
 

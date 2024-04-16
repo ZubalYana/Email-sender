@@ -21,12 +21,29 @@ axios.get('/files')
                     });
             });
         });
-        $('.filesPopup_SaveChBtn').click(()=>{
-            const updatedData = $('#newEmails').val();
-            console.log(updatedData);
-            axios.post('/file-newContent', { content: updatedData })
-            $('#newEmails').val('')
-        })
+        // $('.filesPopup_SaveChBtn').click(()=>{
+        //     const updatedData = $('#newEmails').val();
+        //     console.log(updatedData);
+        //     axios.post('/file-newContent', { content: updatedData })
+        //     $('#newEmails').val('')
+        // })
+        
+        let emails = [];
+
+        $('.filesPopup_SaveChBtn').click(() => {
+            const newEmail = $('#newEmails').val();
+            emails.push(newEmail);
+            // console.log(emails);
+            axios.post('/file-newContent', { emails }) // Send emails as an object
+                .then(response => {
+                    console.log(response.data);
+                    $('#newEmails').val('');
+                })
+                .catch(error => {
+                    console.error('Error updating file:', error);
+                });
+        });
+        
         
         $('.filesPopup_SendEmailsBtn').click(() => {
             axios.get('/emails-list')
