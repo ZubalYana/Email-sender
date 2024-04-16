@@ -85,10 +85,7 @@
             height: 85%;
             resize: none; 
         }
-        .filesPopup_SaveChBtns{
-            width: 640px;
-            display: flex;
-            justify-content: space-between;
+
             button{
                 background-color: #333;
                 color: #fff;
@@ -109,7 +106,7 @@
                 color: #333;
                 border: 2px #333 solid;
             }
-        }
+        
 
     }
 }

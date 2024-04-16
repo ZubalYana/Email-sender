@@ -89,12 +89,7 @@
   height: 85%;
   resize: none;
 }
-.filesPopup_container .filesPopup .filesPopup_SaveChBtns {
-  width: 640px;
-  display: flex;
-  justify-content: space-between;
-}
-.filesPopup_container .filesPopup .filesPopup_SaveChBtns button {
+.filesPopup_container .filesPopup button {
   background-color: #333;
   color: #fff;
   width: 300px;
@@ -109,7 +104,7 @@
   font-weight: 600;
   margin-top: 20px;
 }
-.filesPopup_container .filesPopup .filesPopup_SaveChBtns button:hover {
+.filesPopup_container .filesPopup button:hover {
   background-color: #fff;
   color: #333;
   border: 2px #333 solid;
