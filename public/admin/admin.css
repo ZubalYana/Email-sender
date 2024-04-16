@@ -89,7 +89,14 @@
   height: 85%;
   resize: none;
 }
-.filesPopup_container .filesPopup input {
+.filesPopup_container .filesPopup .filesPopup_emailsAddingCon {
+  width: 55%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.filesPopup_container .filesPopup .filesPopup_emailsAddingCon input {
   width: 50%;
   outline: none;
   border: 1px #333 solid;
@@ -98,9 +105,27 @@
   padding: 10px;
   font-size: 24px;
   font-weight: 600;
-  margin-top: 15px;
 }
-.filesPopup_container .filesPopup button {
+.filesPopup_container .filesPopup .filesPopup_emailsAddingCon button {
+  background-color: #333;
+  color: #fff;
+  width: 300px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: 0.5s ease;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 600;
+}
+.filesPopup_container .filesPopup .filesPopup_emailsAddingCon button:hover {
+  background-color: #fff;
+  color: #333;
+  border: 2px #333 solid;
+}
+.filesPopup_container .filesPopup .filesPopup_SendEmailsBtn {
   background-color: #333;
   color: #fff;
   width: 300px;
@@ -115,7 +140,7 @@
   font-weight: 600;
   margin-top: 20px;
 }
-.filesPopup_container .filesPopup button:hover {
+.filesPopup_container .filesPopup .filesPopup_SendEmailsBtn:hover {
   background-color: #fff;
   color: #333;
   border: 2px #333 solid;

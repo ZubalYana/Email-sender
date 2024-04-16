@@ -85,18 +85,45 @@
             height: 85%;
             resize: none; 
         }
-        input{
-            width: 50%;
-            outline: none;
-            border: 1px #333 solid;
-            border-radius: 6px;
+        .filesPopup_emailsAddingCon{
+            width: 55%;
             height: 60px;
-            padding: 10px;
-            font-size: 24px;
-            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
             margin-top: 15px;
-        }
+
+            input{
+                width: 50%;
+                outline: none;
+                border: 1px #333 solid;
+                border-radius: 6px;
+                height: 60px;
+                padding: 10px;
+                font-size: 24px;
+                font-weight: 600;
+            }
             button{
+                background-color: #333;
+                color: #fff;
+                width: 300px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                transition: 0.5s ease;
+                cursor: pointer;
+                font-size: 24px;
+                font-weight: 600;
+            }
+            button:hover{
+                background-color: #fff;
+                color: #333;
+                border: 2px #333 solid;
+            }
+        }
+
+            .filesPopup_SendEmailsBtn{
                 background-color: #333;
                 color: #fff;
                 width: 300px;
@@ -111,7 +138,7 @@
                 font-weight: 600;
                 margin-top: 20px;
             }
-            button:hover{
+            .filesPopup_SendEmailsBtn:hover{
                 background-color: #fff;
                 color: #333;
                 border: 2px #333 solid;
