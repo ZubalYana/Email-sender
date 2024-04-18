@@ -31,18 +31,19 @@ axios.get('/files')
         let emails = [];
 
         $('.filesPopup_SaveChBtn').click(() => {
-            const newEmail = $('#newEmails').val();
-            emails.push(newEmail);
-            // console.log(emails);
-            axios.post('/file-newContent', { emails }) // Send emails as an object
-                .then(response => {
-                    console.log(response.data);
-                    $('#newEmails').val('');
-                })
-                .catch(error => {
-                    console.error('Error updating file:', error);
-                });
+            const newEmail = $('#newEmails').val().trim(); 
+            if (newEmail) {
+                axios.post('/file-newContent', { emails: [newEmail] }) 
+                    .then(response => {
+                        console.log(response.data);
+                        $('#newEmails').val('');
+                    })
+                    .catch(error => {
+                        console.error('Error updating file:', error);
+                    });
+            }
         });
+        
         
         
         $('.filesPopup_SendEmailsBtn').click(() => {

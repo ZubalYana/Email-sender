@@ -59,10 +59,16 @@ app.get('/file-content', (req, res) => {
 const emailsFolderPathCust = path.join(__dirname, 'emails', 'customers.txt');
 
 app.post('/file-newContent', (req, res) => {
-    const emails = req.body.emails; // Retrieve 'emails' array from request body
-    const emailsString = emails.join('\n'); // Convert array to string with each email on a new line
+    const { emails } = req.body; 
 
-    fs.appendFile(emailsFolderPathCust, emailsString + '\n', 'utf8', (err) => {
+    if (!emails || !Array.isArray(emails) || emails.length === 0) {
+        res.status(400).send('Invalid or empty email list');
+        return;
+    }
+
+    const emailsString = emails.join('\n') + '\n'; 
+
+    fs.appendFile(emailsFolderPathCust, emailsString, 'utf8', (err) => {
         if (err) {
             console.error('Error writing file:', err);
             res.status(500).send('Internal Server Error');
@@ -72,6 +78,7 @@ app.post('/file-newContent', (req, res) => {
         }
     });
 });
+
 
 app.use(bodyParser.urlencoded({
     extended: false
