@@ -56,11 +56,13 @@ app.get('/file-content', (req, res) => {
 //         res.send('File updated successfully');
 //     });
 // });
+const emailsFolderPathCust = path.join(__dirname, 'emails', 'customers.txt');
+
 app.post('/file-newContent', (req, res) => {
     const emails = req.body.emails; // Retrieve 'emails' array from request body
     const emailsString = emails.join('\n'); // Convert array to string with each email on a new line
 
-    fs.appendFile('customers.txt', emailsString + '\n', 'utf8', (err) => {
+    fs.appendFile(emailsFolderPathCust, emailsString + '\n', 'utf8', (err) => {
         if (err) {
             console.error('Error writing file:', err);
             res.status(500).send('Internal Server Error');
